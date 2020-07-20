@@ -6,14 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/txt"
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-125dp">
+
+        <EditText
+            android:id="@+id/editTextCep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:ems="10"
+            android:hint="CEP"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCep">
+
+            <TextView
+                android:id="@+id/textViewLogradouro"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:text="Logradouro" />
+
+            <TextView
+                android:id="@+id/textViewComplemento"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginTop="8dp"
+                android:text="Complemento" />
+
+            <TextView
+                android:id="@+id/textViewLocalidade"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginTop="8dp"
+                android:text="Localidade" />
+
+            <TextView
+                android:id="@+id/textViewBairro"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginTop="8dp"
+                android:text="Bairro" />
+
+            <TextView
+                android:id="@+id/textViewUf"
+                android:layout_width="20dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="8dp"
+                android:text="Uf" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/buttonSearch"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/ic_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/editTextCep"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

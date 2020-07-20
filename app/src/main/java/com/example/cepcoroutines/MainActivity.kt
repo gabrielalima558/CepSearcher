@@ -3,6 +3,7 @@ package com.example.cepcoroutines
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,40 +20,42 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupObservers()
 
+
+        buttonSearch.setOnClickListener {
+            if(!editTextCep.text.isNullOrEmpty()){
+                setupObservers(editTextCep.text.toString())
+            }
+        }
     }
-    private fun setupObservers() {
-        viewModel.getAddress("06086070").observe(this, Observer {
+    private fun setupObservers(cep: String) {
+        viewModel.getAddress(cep).observe(this, Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-//                        recyclerView.visibility = View.VISIBLE
-//                        progressBar.visibility = View.GONE
-                        resource.data?.let { cep -> retrieveList(cep) }
+                        constLayout.visibility = View.VISIBLE
+                        progressBar.visibility = View.GONE
+                        resource.data?.let { cep -> populateTextViews(cep) }
                     }
                     Status.ERROR -> {
-//                        recyclerView.visibility = View.VISIBLE
-//                        progressBar.visibility = View.GONE
+                        constLayout.visibility = View.VISIBLE
+                        progressBar.visibility = View.GONE
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                         Log.e("TAG", it.message.toString())
                     }
                     Status.LOADING -> {
-//                        progressBar.visibility = View.VISIBLE
-//                        recyclerView.visibility = View.GONE
+                        progressBar.visibility = View.VISIBLE
+                        constLayout.visibility = View.GONE
                     }
                 }
             }
         })
     }
-    private fun retrieveList(cep: Cep) {
-//        adapter.apply {
-//            addUsers(users)
-//            notifyDataSetChanged()
-//        }
-        Toast.makeText(this, cep.bairro, Toast.LENGTH_LONG).show()
-        txt.text
-
-
+    private fun populateTextViews(cep: Cep) {
+        textViewLogradouro.text = cep.logradouro
+        textViewComplemento.text = cep.complemento
+        textViewLocalidade.text = cep.localidade
+        textViewBairro.text = cep.bairro
+        textViewUf.text = cep.uf
     }
 }
