@@ -60,10 +60,6 @@ class MainActivity : AppCompatActivity() {
         textViewLocalidade.text = cep.localidade
         textViewBairro.text = cep.bairro
         textViewUf.text = cep.uf
-        saveDataDb(cep)
-    }
-
-    private fun saveDataDb(cep: Cep){
         viewModel.saveCep(cep)
     }
 }
