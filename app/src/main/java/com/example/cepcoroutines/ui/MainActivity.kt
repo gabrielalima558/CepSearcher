@@ -1,4 +1,4 @@
-package com.example.cepcoroutines
+package com.example.cepcoroutines.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.cepcoroutines.R
 import com.example.cepcoroutines.model.Cep
+import com.example.cepcoroutines.ui.registration.CepViewParams
 import com.example.cepcoroutines.utils.Status
 import com.example.cepcoroutines.viewmodel.CepViewModel
 import com.example.cepcoroutines.viewmodel.ViewModelFactory
@@ -35,7 +37,8 @@ class MainActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         constLayout.visibility = View.VISIBLE
                         progressBar.visibility = View.GONE
-                        resource.data?.let { cep -> populateTextViews(cep) }
+                        resource.data?.let { cep -> populateTextViews(cep)
+                        }
                     }
                     Status.ERROR -> {
                         constLayout.visibility = View.VISIBLE
@@ -57,5 +60,10 @@ class MainActivity : AppCompatActivity() {
         textViewLocalidade.text = cep.localidade
         textViewBairro.text = cep.bairro
         textViewUf.text = cep.uf
+        saveDataDb(cep)
+    }
+
+    private fun saveDataDb(cep: Cep){
+        viewModel.saveCep(cep)
     }
 }

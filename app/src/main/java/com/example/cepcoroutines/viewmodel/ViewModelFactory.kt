@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cepcoroutines.api.CepApi
 import com.example.cepcoroutines.api.RetrofitBuilder
 import com.example.cepcoroutines.data.CepRepository
+import com.example.deliverytest.application.Injector
 
 
 object ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
@@ -14,7 +15,7 @@ object ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
     private val cepApi = CepApi(retrofit)
 
     private val cepRepository =
-        CepRepository(cepApi)
+        CepRepository(cepApi, Injector.cepDao())
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
