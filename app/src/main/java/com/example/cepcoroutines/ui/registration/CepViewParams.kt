@@ -7,7 +7,6 @@ data class CepViewParams(
     var bairro: String = "",
     var localidade: String = "",
     var uf: String = "",
-    var unidade: String = "",
     var ibge: String = "",
     var gia: String = ""
 )

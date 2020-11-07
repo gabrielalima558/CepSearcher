@@ -6,7 +6,6 @@ data class Cep(val cep: String,
                val bairro: String,
                val localidade: String,
                val uf: String,
-               val unidade: String,
                val ibge: String,
                val gia: String
                )

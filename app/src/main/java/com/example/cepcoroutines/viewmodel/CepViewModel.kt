@@ -28,7 +28,6 @@ class CepViewModel(private val repository: CepRepository): ViewModel() {
             cepViewParams.bairro = cep.bairro
             cepViewParams.localidade = cep.localidade
             cepViewParams.uf = cep.uf
-            cepViewParams.unidade = cep.unidade
             cepViewParams.ibge = cep.ibge
             cepViewParams.gia = cep.gia
             repository.setCep(cepViewParams)

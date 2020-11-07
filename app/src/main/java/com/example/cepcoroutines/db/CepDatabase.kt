@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.cepcoroutines.model.CepEntity
 
-@Database(entities = [CepEntity::class], version = 1)
+@Database(entities = [CepEntity::class], version = 2)
 abstract class CepDatabase : RoomDatabase() {
 
     abstract fun cepDao(): CepDao

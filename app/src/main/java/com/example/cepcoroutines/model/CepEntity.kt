@@ -12,7 +12,6 @@ data class CepEntity(
     val bairro: String,
     val localidade: String,
     val uf: String,
-    val unidade: String,
     val ibge: String,
     val gia: String,
     @PrimaryKey(autoGenerate = true) val id: Int = 0
@@ -28,7 +27,6 @@ fun CepViewParams.toCepEntity(): CepEntity {
             localidade = this.localidade,
             complemento = this.complemento,
             uf = this.uf,
-            unidade = this.unidade,
             ibge = this.ibge,
             gia = this.gia
         )
